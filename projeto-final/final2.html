@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <body>
+      <p>Numeros</p>
+      <div id="numeros"></div>
+      <p>Menor numero</p>
+      <div id="menor"></div>
+      <p>Maior numero</p>
+      <div id="maior"></div>
+      <p>Par</p>
+      <div id="par"></div>
+      <p>Impar</p>
+      <div id="impar"></div>
+      <p>O Numero</p>
+      <div id="list"></div>
+      <p>Repeti</p>
+      <div id="cont"></div>
+      <p>Vez</p>
+    </body>
+    <script>
+      var valor = [];
+      function numeros() {
+        document.getElementById('numeros').innerHTML = valor;
+      }
+      function valorArray() {
+        for (i = 0; i < 5; i++) {
+          numero = prompt('Digite um valor');
+          valor.push(numero);
+        }
+      }
+      function menorNumero() {
+        valor.sort(function (a, b) {
+          return a - b;
+        });
+
+        var m = '';
+        for (var it = 0; it < valor.length; it++) {
+          m += valor[it] + '-';
+        }
+        document.getElementById('menor').innerHTML = valor[0];
+      }
+      function maiorNumero() {
+        valor.sort(function (a, b) {
+          return a - b;
+        });
+
+        var m = '';
+        for (var it = 0; it < valor.length; it++) {
+          m += valor[it] + '-';
+        }
+        document.getElementById('maior').innerHTML = valor[valor.length - 1];
+      }
+
+      function parImpar() {
+        const verificar = (elementos) => {
+          let pares = [];
+          let impares = [];
+
+          for (let elemento of elementos) {
+            let alvo = elemento % 2 === 0 ? pares : impares;
+
+            alvo.push(elemento);
+          }
+
+          return { pares, impares };
+        };
+
+        let { pares, impares } = verificar(valor);
+
+        document.getElementById('par').innerHTML = pares;
+        document.getElementById('impar').innerHTML = impares;
+      }
+
+      function contar() {
+        let cont = [];
+        var list = [];
+        var novaLista = valor.filter(function (item, im) {
+          if (valor.indexOf(item) != im) {
+            list.push(item);
+            cont.push(im);
+          }
+          return list.indexOf(item) == im;
+        });
+
+        document.getElementById('list').innerHTML = list[0];
+        document.getElementById('cont').innerHTML = cont.length + 1;
+      }
+      valorArray();
+      numeros();
+      menorNumero();
+      maiorNumero();
+      parImpar();
+      contar();
+    </script>
+  </body>
+</html>
