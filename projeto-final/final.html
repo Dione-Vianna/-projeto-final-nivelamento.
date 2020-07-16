@@ -12,12 +12,18 @@
       <button onclick="maior()">Adicionar</button>
       <button onclick="menorNumero()">Menor numero</button>
       <button onclick="maiorNumero()">Maior numero</button>
+      <button onclick="parImpar()">Par Impar</button>
+
       <p>Numeros</p>
       <div id="numeroAdd"></div>
       <p>Menor numero</p>
       <div id="menor"></div>
       <p>Menor numero</p>
       <div id="maior"></div>
+      <p>Par</p>
+      <div id="par"></div>
+      <p>Impar</p>
+      <div id="impar"></div>
     </body>
     <script>
       var valor = [];
@@ -47,6 +53,29 @@
           m += valor[it] + '-';
         }
         document.getElementById('maior').innerHTML = valor[valor.length - 1];
+      }
+
+      function parImpar() {
+        const verificar = (elementos) => {
+          let pares = [];
+          let impares = [];
+
+          for (let elemento of elementos) {
+            let alvo = elemento % 2 === 0 ? pares : impares;
+
+            alvo.push(elemento);
+          }
+
+          return { pares, impares };
+        };
+
+        let { pares, impares } = verificar(valor);
+
+        document.getElementById('par').innerHTML = pares;
+        document.getElementById('impar').innerHTML = impares;
+
+        console.log('pares =>', pares.join(', '));
+        console.log('impares =>', impares.join(', '));
       }
     </script>
   </body>
