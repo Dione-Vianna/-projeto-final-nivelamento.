@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <body>
+      <h2>Digite 5 valores um de cada vez</h2>
+      <input type="number" id="valor" />
+      <button onclick="maior()">Adicionar</button>
+      <button onclick="menorNumero()">Menor numero</button>
+      <button onclick="maiorNumero()">Maior numero</button>
+      <p>Numeros</p>
+      <div id="numeroAdd"></div>
+      <p>Menor numero</p>
+      <div id="menor"></div>
+      <p>Menor numero</p>
+      <div id="maior"></div>
+    </body>
+    <script>
+      var valor = [];
+      function maior() {
+        valor.push(document.getElementById('valor').value);
+        document.getElementById('valor').value = '';
+        document.getElementById('numeroAdd').innerHTML = valor;
+      }
+      function menorNumero() {
+        valor.sort(function (a, b) {
+          return a - b;
+        });
+
+        var m = '';
+        for (var it = 0; it < valor.length; it++) {
+          m += valor[it] + '-';
+        }
+        document.getElementById('menor').innerHTML = valor[0];
+      }
+      function maiorNumero() {
+        valor.sort(function (a, b) {
+          return a - b;
+        });
+
+        var m = '';
+        for (var it = 0; it < valor.length; it++) {
+          m += valor[it] + '-';
+        }
+        document.getElementById('maior').innerHTML = valor[valor.length - 1];
+      }
+    </script>
+  </body>
+</html>
